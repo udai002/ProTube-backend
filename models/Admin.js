@@ -4,7 +4,11 @@ const { Schema } = mongoose;
 const AdminSchema =  new Schema({
     username:String,
     password:String,
-    email:String
+    email:String,
+    profile:String,
+    coverPhoto:String ,
+    description:String ,
+    channelId:String
 
 })
 

@@ -1,5 +1,7 @@
 const express = require('express')
 const { default: mongoose } = require('mongoose')
+const router = require('./routes/User')
+
 const dotenv = require('dotenv').config() 
 // const mongoose = require('mongoose')
 const Port = dotenv.parsed.PORT || 3000
@@ -20,11 +22,12 @@ connectMongo()
 
 app.use(express.json())
 
+
 app.get('/' , (req , res)=>{
     res.send({message:"Welcome to express app"})
 })
 
-// ********* write your code here *********
+app.use('/' , router)
 
 app.listen(Port , ()=>{
     console.log(`app is listening... at http://localhost:${Port}`)
