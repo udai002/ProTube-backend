@@ -21,7 +21,7 @@ const connectMongo = async ()=>{
 connectMongo()
 
 app.use(express.json())
-
+app.use(express.static('public'))
 
 app.get('/' , (req , res)=>{
     res.send({message:"Welcome to express app"})
