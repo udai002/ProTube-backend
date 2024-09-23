@@ -1,7 +1,7 @@
 const express = require('express')
 const { default: mongoose } = require('mongoose')
 const router = require('./routes/User')
-
+const cors = require('cors')
 const dotenv = require('dotenv').config() 
 // const mongoose = require('mongoose')
 const Port = dotenv.parsed.PORT || 3000
@@ -12,7 +12,6 @@ mongoose.set("strictQuery" , false)
 const connectMongo = async ()=>{
     try{
         const conn = await mongoose.connect('mongodb+srv://karumuriudaisai002:udai123@cluster0.4o0q2x6.mongodb.net/')
-        console.log("mongodb connected...." , conn)
     }catch(e){
         console.log(e)
     }
@@ -20,6 +19,7 @@ const connectMongo = async ()=>{
 
 connectMongo()
 
+app.use(cors())
 app.use(express.json())
 app.use(express.static('public'))
 
