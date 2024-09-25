@@ -56,6 +56,7 @@ router.post("/api/user/login" , async(req , res)=>{
      if(password === findUser.password){
          const {username , channelId} = findUser
          jwt.sign({username , channelId} , process.env.SCRETE_KEY ,(err , token)=>{
+            if(err) return res.send(err)
             return res.send({jwtToken:token})
          }) 
      }
